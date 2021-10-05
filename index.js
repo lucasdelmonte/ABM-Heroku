@@ -21,7 +21,7 @@ mongoose
   });
 
 const productsRoutes = require('./api/Routes/Product/product');
-const providersRoutes = require('./api/Routes/Product/provider');
+const providersRoutes = require('./api/Routes/Provider/provider');
 
 app.use('/api/products/', productsRoutes);
 app.use('/api/provider/', providersRoutes);

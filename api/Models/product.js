@@ -13,6 +13,10 @@ const Product = new Schema({
   price: {
     type: Number,
     required: true
+  },
+  marca: {
+    type: String,
+    required: true
   }
 });
 
