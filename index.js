@@ -20,10 +20,10 @@ mongoose
     console.log(`Database not connected, error ${error}`);
   });
 
-const productsRoutes = require('./api/Routes/Product/product');
+const productsRoutes = require('./api/Routes/routeProduct');
 const providersRoutes = require('./api/Routes/Provider/provider');
 
-app.use('/api/products/', productsRoutes);
+app.use('/api/products/', productsRoutes());
 app.use('/api/provider/', providersRoutes);
 
 app.listen(PORT, () => {
