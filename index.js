@@ -21,8 +21,10 @@ mongoose
   });
 
 const productsRoutes = require('./api/Routes/Product/product');
+const providersRoutes = require('./api/Routes/Product/provider');
 
 app.use('/api/products/', productsRoutes);
+app.use('/api/provider/', providersRoutes);
 
 app.listen(PORT, () => {
   console.log('listening on port', PORT);
