@@ -1,14 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const Product = require('../Models/product');
+const controllerProduct = require('../Controllers/controllerProducts');
 
-router.get('/', async (req, res) => {
-  try {
-    const product = await Product.find();
-    res.json(product);
-  } catch {
-    res.json({ message: error });
-  }
-});
+module.exports = () => {
+  router.get('/all', controllerProduct.getAllProducts);
 
-module.exports = router;
+  return router;
+}
