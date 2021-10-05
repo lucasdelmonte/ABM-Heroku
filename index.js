@@ -14,10 +14,10 @@ app.use(bodyParser.json());
 mongoose
   .connect(conexion_bd)
   .then(() => {
-    console.log(`connected to the dataBase`);
+    console.log(`Connected to the dataBase`);
   })
   .catch((error) => {
-    console.log(`database not connected, error ${error}`);
+    console.log(`Database not connected, error ${error}`);
   });
 
 const productsRoutes = require('./api/Routes/Product/product');
@@ -27,7 +27,7 @@ app.use('/api/products/', productsRoutes);
 app.use('/api/provider/', providersRoutes);
 
 app.listen(PORT, () => {
-  console.log('listening on port', PORT);
+  console.log('Listening on port', PORT);
 });
 
 console.log('Bienvenido');
