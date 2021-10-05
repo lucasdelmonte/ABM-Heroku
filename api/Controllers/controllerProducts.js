@@ -17,3 +17,27 @@ exports.getAllProducts = async (req, res) => {
     });
   }
 };
+
+// Agregar productos
+exports.addNewProduct = async (req, res) => {
+  try {
+    const product = new modelProduct(req.body);
+    const { name, description, price, brand } = req.body; 
+    if (!name || !description || !price || !brand) {
+      return res.status(400).json({
+        error: true,
+        message: 'Faltan ingresar datos.'
+      });
+    }
+    const newProduct = await product.save();
+    return res.status(201).json({
+      dato: newProduct,
+      error: false
+    });
+  } catch (error) {
+    return res.status(400).json({
+      error: true,
+      message: error
+    });
+  }
+};
