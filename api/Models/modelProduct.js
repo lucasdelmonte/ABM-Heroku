@@ -14,7 +14,7 @@ const Product = new Schema({
     type: Number,
     required: true
   },
-  marca: {
+  brand: {
     type: String,
     required: true
   }
