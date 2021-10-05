@@ -40,3 +40,12 @@ exports.addProvider = async (req, res) => {
     });
   }
 };
+
+exports.searchById = async (req, res) => {
+  try {
+    const provider = await modelProvider.findById(req.params._id);
+    res.json(provider);
+  } catch (error) {
+    res.json({ message: 'provider not found' });
+  }
+};
