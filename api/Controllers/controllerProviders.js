@@ -17,3 +17,26 @@ exports.getAllProviders = async (req, res) => {
     });
   }
 };
+
+exports.addProvider = async (req, res) => {
+  try {
+    const provider = new modelProvider(req.body);
+    const { company, name } = req.body; //data from POSTMAN
+    if (!company || !name) {
+      return res.status(400).json({
+        error: true,
+        message: 'Missing data entry'
+      });
+    }
+    const newProvider = await provider.save();
+    return res.status(201).json({
+      dato: newProvider,
+      error: false
+    });
+  } catch (error) {
+    return res.status(400).json({
+      error: true,
+      message: 'Total error'
+    });
+  }
+};
