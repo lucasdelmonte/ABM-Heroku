@@ -74,3 +74,21 @@ exports.updateProduct= async (req, res) => {
     }
   );
 };
+
+// Eliminar productos
+exports.deleteProduct= async (req, res) => {
+  try {
+    const response = await modelProduct.findOneAndRemove({
+      _id: req.params.productId
+    });
+    return res.status(202).json({
+      data: response,
+      error: false
+    });
+  } catch (error) {
+    return res.status(400).json({
+      error: true,
+      message: error
+    });
+  }
+};
