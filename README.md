@@ -46,11 +46,19 @@ DELETE: http://localhost:8000/api/products/id
 
 - Proveedores
 
-```
-...
+GET: http://localhost:8000/api/provider/all
+GET: http://localhost:8000/api/provider/id
+GET: http://localhost:8000/api/provider/firstname/
+GET: http://localhost:8000/api/provider/lastname/
+GET: http://localhost:8000/api/provider/email/
+POST: http://localhost:8000/api/provider/
+PUT: http://localhost:8000/api/provider/id
+DELETE: http://localhost:8000/api/provider/id
+
 ```
 
 ### Equipo de trabajo y distribución
 
 - De Castro Gonzalo encargado de la rama (providers)
 - Delmonte Lucas encargado de la rama (products)
+```
