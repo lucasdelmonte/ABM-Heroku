@@ -41,3 +41,20 @@ exports.addNewProduct = async (req, res) => {
     });
   }
 };
+
+// Buscar por id
+exports.searchById = async (req, res) => {
+  try {
+    const response = await modelProduct.findById(req.params._id);
+
+    return res.status(200).json({
+      data: response,
+      error: false
+    });
+  } catch (error) {
+    return res.status(400).json({
+      error: true,
+      message: 'error(400) product not found'
+    });
+  }
+};
