@@ -111,6 +111,21 @@ exports.searchByEmail = async (req, res) => {
   }
 };
 
+exports.updateProvider = async (req, res) => {
+  let id = req.params._id;
+  let update = req.body;
+  const provider = await modelProvider.findByIdAndUpdate(
+    id,
+    update,
+    (err, providerUpdate) => {
+      if (err) {
+        res.status(500).send({ message: 'error' });
+      }
+      res.status(200).send({ provider: providerUpdate });
+    }
+  );
+};
+
 exports.deleteProvider = async (req, res) => {
   try {
     const response = await modelProvider.findOneAndRemove({
