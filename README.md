@@ -46,6 +46,8 @@ DELETE: http://localhost:8000/api/products/id
 
 - Proveedores
 
+...
+
 GET: http://localhost:8000/api/provider/all
 GET: http://localhost:8000/api/provider/id
 GET: http://localhost:8000/api/provider/firstname/
