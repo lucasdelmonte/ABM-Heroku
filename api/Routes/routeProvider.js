@@ -4,6 +4,18 @@ const controllerProviders = require('../Controllers/controllerProviders');
 
 module.exports = () => {
   router.get('/all', controllerProviders.getAllProviders);
+  router.get('/:_id', controllerProviders.searchById);
+  router.get(
+    '/firstname/:providerFirstName',
+    controllerProviders.searchByfirstName
+  );
+  router.get(
+    '/lastname/:providerLastName',
+    controllerProviders.searchBylastName
+  );
+  router.get('/email/:providerEmail', controllerProviders.searchByEmail);
+  router.post('/', controllerProviders.addProvider);
+  router.delete('/:providerId', controllerProviders.deleteProvider);
 
   return router;
 };
