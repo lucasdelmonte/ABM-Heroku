@@ -43,9 +43,35 @@ exports.addProvider = async (req, res) => {
 
 exports.searchById = async (req, res) => {
   try {
-    const provider = await modelProvider.findById(req.params._id);
-    res.json(provider);
+    const response = await modelProvider.findOne({
+      _id: req.params.providerId
+    });
+
+    return res.status(200).json({
+      data: response,
+      error: false
+    });
   } catch (error) {
-    res.json({ message: 'provider not found' });
+    return res.status(400).json({
+      error: true,
+      message: 'error(400) provider not found'
+    });
+  }
+};
+
+exports.deleteProvider = async (req, res) => {
+  try {
+    const response = await modelProvider.findOneAndRemove({
+      _id: req.params.providerId
+    });
+    return res.status(202).json({
+      data: response,
+      error: false
+    });
+  } catch (error) {
+    return res.status(400).json({
+      error: true,
+      message: error
+    });
   }
 };
