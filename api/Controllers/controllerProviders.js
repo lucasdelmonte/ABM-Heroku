@@ -21,8 +21,8 @@ exports.getAllProviders = async (req, res) => {
 exports.addProvider = async (req, res) => {
   try {
     const provider = new modelProvider(req.body);
-    const { company, name } = req.body; //data from POSTMAN
-    if (!company || !name) {
+    const { company, firstName, lastName } = req.body; //data from POSTMAN
+    if (!company || !firstName || !lastName) {
       return res.status(400).json({
         error: true,
         message: 'Missing data entry'
@@ -43,9 +43,7 @@ exports.addProvider = async (req, res) => {
 
 exports.searchById = async (req, res) => {
   try {
-    const response = await modelProvider.findOne({
-      _id: req.params.providerId
-    });
+    const response = await modelProvider.findById(req.params._id);
 
     return res.status(200).json({
       data: response,
@@ -55,6 +53,60 @@ exports.searchById = async (req, res) => {
     return res.status(400).json({
       error: true,
       message: 'error(400) provider not found'
+    });
+  }
+};
+
+exports.searchByfirstName = async (req, res) => {
+  try {
+    const response = await modelProvider.find({
+      firstName: req.params.providerFirstName
+    });
+
+    return res.status(200).json({
+      data: response,
+      error: false
+    });
+  } catch (error) {
+    return res.status(400).json({
+      error: true,
+      message: 'error(400) firstname provider not found'
+    });
+  }
+};
+
+exports.searchBylastName = async (req, res) => {
+  try {
+    const response = await modelProvider.find({
+      lastName: req.params.providerLastName
+    });
+
+    return res.status(200).json({
+      data: response,
+      error: false
+    });
+  } catch (error) {
+    return res.status(400).json({
+      error: true,
+      message: 'error(400) lastname provider not found'
+    });
+  }
+};
+
+exports.searchByEmail = async (req, res) => {
+  try {
+    const response = await modelProvider.find({
+      email: req.params.providerEmail
+    });
+
+    return res.status(200).json({
+      data: response,
+      error: false
+    });
+  } catch (error) {
+    return res.status(400).json({
+      error: true,
+      message: 'error(400) email provider not found'
     });
   }
 };
