@@ -114,14 +114,14 @@ exports.searchByEmail = async (req, res) => {
 exports.updateProvider = async (req, res) => {
   let id = req.params._id;
   let update = req.body;
-  const provider = await modelProvider.findByIdAndUpdate(
+  const response = await modelProvider.findByIdAndUpdate(
     id,
     update,
-    (err, providerUpdate) => {
-      if (err) {
-        res.status(500).send({ message: 'error' });
+    (error, preview) => {
+      if (error) {
+        return res.status(500).json({ message: 'error' });
       }
-      res.status(200).send({ provider: providerUpdate });
+      return res.status(200).json({ preview, update });
     }
   );
 };
