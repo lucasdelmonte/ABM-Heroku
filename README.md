@@ -34,6 +34,22 @@ Iniciamos el servidor con el comando npm start
 
 5. Ejecución local en http://localhost:8000
 
+- Productos
+
+```
+GET: http://localhost:8000/api/products/all
+GET: http://localhost:8000/api/products/id
+POST: http://localhost:8000/api/products/
+PUT: http://localhost:8000/api/products/id
+DELETE: http://localhost:8000/api/products/id
+```
+
+- Proveedores
+
+```
+...
+```
+
 ### Equipo de trabajo y distribución
 
 - De Castro Gonzalo encargado de la rama (providers)
