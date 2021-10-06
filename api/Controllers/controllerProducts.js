@@ -58,3 +58,19 @@ exports.searchById = async (req, res) => {
     });
   }
 };
+
+// Actualizar productos
+exports.updateProduct= async (req, res) => {
+  let id = req.params._id;
+  let update = req.body;
+  const response = await modelProduct.findByIdAndUpdate(
+    id,
+    update,
+    (error, preview) => {
+      if (error) {
+        return res.status(500).json({ message: 'error' });
+      }
+      return res.status(200).json({ preview, update });
+    }
+  );
+};
