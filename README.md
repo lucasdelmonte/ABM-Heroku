@@ -42,6 +42,8 @@ GET: http://localhost:8000/api/products/id
 POST: http://localhost:8000/api/products/
 PUT: http://localhost:8000/api/products/id
 DELETE: http://localhost:8000/api/products/id
+
+Link Colecciones POSTMAN https://www.getpostman.com/collections/c8bf7c7411430f3c6cdb
 ```
 
 - Proveedores
