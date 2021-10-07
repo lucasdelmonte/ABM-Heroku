@@ -56,6 +56,8 @@ POST: http://localhost:8000/api/provider/
 PUT: http://localhost:8000/api/provider/id
 DELETE: http://localhost:8000/api/provider/id
 
+Link Colecciones POSTMAN https://www.getpostman.com/collections/ed7b694ec8e356cbaecc
+
 ```
 
 ### Equipo de trabajo y distribución
