@@ -3,8 +3,8 @@ const router = express.Router();
 const controllerProviders = require('../Controllers/controllerProviders');
 
 module.exports = () => {
-  router.get('/all', controllerProviders.getAllProviders);
-  router.get('/:_id', controllerProviders.searchById);
+  router.get('/', controllerProviders.getAllProviders);
+  router.get('/:providerId', controllerProviders.searchById);
   router.get(
     '/firstname/:providerFirstName',
     controllerProviders.searchByfirstName
