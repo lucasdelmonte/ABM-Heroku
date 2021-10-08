@@ -34,7 +34,7 @@ exports.addProvider = async (req, res) => {
   } catch (error) {
     return res.status(400).json({
       error: true,
-      message: 'Total error'
+      message: error
     });
   }
 };
@@ -44,6 +44,12 @@ exports.searchById = async (req, res) => {
     const response = await modelProvider.findById({
       _id: req.params.providerId
     });
+    if (!response || response.length === 0) {
+      return res.status(404).json({
+        error: true,
+        message: 'error(404) provider not found'
+      });
+    }
     return res.status(200).json({
       data: response,
       error: false
@@ -51,7 +57,7 @@ exports.searchById = async (req, res) => {
   } catch (error) {
     return res.status(400).json({
       error: true,
-      message: 'error(404) provider not found or error'
+      message: 'error(400) invalid ID '
     });
   }
 };
@@ -67,16 +73,15 @@ exports.searchByfirstName = async (req, res) => {
         error: true,
         message: 'error(404) provider not found'
       });
-    } else {
-      return res.status(200).json({
-        data: response,
-        error: false
-      });
     }
+    return res.status(200).json({
+      data: response,
+      error: false
+    });
   } catch (error) {
-    return res.status(404).json({
+    return res.status(400).json({
       error: true,
-      message: 'error(404) firstname provider not found'
+      message: error
     });
   }
 };
@@ -92,16 +97,15 @@ exports.searchBylastName = async (req, res) => {
         error: true,
         message: 'error(404) provider not found'
       });
-    } else {
-      return res.status(200).json({
-        data: response,
-        error: false
-      });
     }
+    return res.status(200).json({
+      data: response,
+      error: false
+    });
   } catch (error) {
-    return res.status(404).json({
+    return res.status(400).json({
       error: true,
-      message: 'error(404) lastname provider not found'
+      message: error
     });
   }
 };
@@ -117,25 +121,24 @@ exports.searchByEmail = async (req, res) => {
         error: true,
         message: 'error(404) provider not found'
       });
-    } else {
-      return res.status(200).json({
-        data: response,
-        error: false
-      });
     }
+    return res.status(200).json({
+      data: response,
+      error: false
+    });
   } catch (error) {
-    return res.status(404).json({
+    return res.status(400).json({
       error: true,
-      message: 'error(404) email provider not found'
+      message: error
     });
   }
 };
 
 exports.updateProvider = async (req, res) => {
-  let id = req.params._id;
+  let providerId = req.params._id;
   let update = req.body;
   const response = await modelProvider.findByIdAndUpdate(
-    id,
+    providerId,
     update,
     (error, preview) => {
       if (error) {
@@ -151,6 +154,12 @@ exports.deleteProvider = async (req, res) => {
     const response = await modelProvider.findOneAndRemove({
       _id: req.params.providerId
     });
+    if (!response || response.length === 0) {
+      return res.status(404).json({
+        error: true,
+        message: 'error(404) provider not found'
+      });
+    }
 
     return res.status(202).json({
       data: response,
@@ -159,7 +168,7 @@ exports.deleteProvider = async (req, res) => {
   } catch (error) {
     return res.status(400).json({
       error: true,
-      message: 'error(404) provider not found'
+      message: 'error(400) invalid ID'
     });
   }
 };
