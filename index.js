@@ -20,7 +20,7 @@ mongoose
   });
 
 app.get('/', (req, res) => {
-  res.send('server running correctly');
+  res.send('server running correctly now');
 });
 
 const productsRoutes = require('./api/Routes/routeProduct');
