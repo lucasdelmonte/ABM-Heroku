@@ -27,7 +27,7 @@ const productsRoutes = require('./api/Routes/routeProduct');
 const providersRoutes = require('./api/Routes/routeProvider');
 
 app.use('/api/products/', productsRoutes());
-app.use('/api/provider/', providersRoutes());
+app.use('/api/providers/', providersRoutes());
 
 app.listen(PORT, () => {
   console.log('Listening on port', PORT);
