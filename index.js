@@ -20,7 +20,7 @@ mongoose
   });
 
 app.get('/', (req, res) => {
-  res.send('Servidor ok');
+  res.send('Server ok');
 });
 
 const productsRoutes = require('./api/Routes/routeProduct');
