@@ -1,6 +1,6 @@
 const modelProduct = require('../Models/modelProduct');
 
-// Obtener productos
+// Get Products
 exports.getAllProducts = async (req, res) => {
   try {
     const response = await modelProduct.find();
@@ -16,7 +16,7 @@ exports.getAllProducts = async (req, res) => {
   }
 };
 
-// Agregar productos
+// Add Products
 exports.addNewProduct = async (req, res) => {
   try {
     const product = new modelProduct(req.body);
@@ -40,7 +40,7 @@ exports.addNewProduct = async (req, res) => {
   }
 };
 
-// Buscar Productos por ID
+// Search Products by ID
 exports.searchById = async (req, res) => {
   try {
     const response = await modelProduct.findById(req.params._id);
@@ -63,7 +63,7 @@ exports.searchById = async (req, res) => {
   }
 };
 
-// Actualizar productos
+// Update Products
 exports.updateProduct= async (req, res) => {
   let id = req.params._id;
   let update = req.body;
@@ -79,7 +79,7 @@ exports.updateProduct= async (req, res) => {
   );
 };
 
-// Eliminar productos por ID
+// Delete products by ID
 exports.deleteProduct= async (req, res) => {
   try {
     const response = await modelProduct.findOneAndRemove({
