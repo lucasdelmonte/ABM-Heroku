@@ -1,5 +1,3 @@
-const fs = require('fs');
-
 const modelProduct = require('../Models/modelProduct');
 
 // Obtener productos
@@ -26,7 +24,7 @@ exports.addNewProduct = async (req, res) => {
     if (!name || !description || !price || !brand) {
       return res.status(400).json({
         error: true,
-        message: 'Faltan ingresar datos.'
+        message: 'Missing data entry.'
       });
     }
     const newProduct = await product.save();
@@ -42,10 +40,16 @@ exports.addNewProduct = async (req, res) => {
   }
 };
 
-// Buscar por id
+// Buscar Productos por ID
 exports.searchById = async (req, res) => {
   try {
     const response = await modelProduct.findById(req.params._id);
+    if (!response || response.length === 0) {
+      return res.status(404).json({
+        error: true,
+        message: 'error(404) product not found.'
+      });
+    }
 
     return res.status(200).json({
       data: response,
@@ -54,7 +58,7 @@ exports.searchById = async (req, res) => {
   } catch (error) {
     return res.status(400).json({
       error: true,
-      message: 'error(400) product not found'
+      message: 'error(400) invalid ID.'
     });
   }
 };
@@ -75,12 +79,19 @@ exports.updateProduct= async (req, res) => {
   );
 };
 
-// Eliminar productos
+// Eliminar productos por ID
 exports.deleteProduct= async (req, res) => {
   try {
     const response = await modelProduct.findOneAndRemove({
       _id: req.params.productId
     });
+    if (!response || response.length === 0) {
+      return res.status(404).json({
+        error: true,
+        message: 'error(404) product not found.'
+      });
+    }
+
     return res.status(202).json({
       data: response,
       error: false
@@ -88,7 +99,7 @@ exports.deleteProduct= async (req, res) => {
   } catch (error) {
     return res.status(400).json({
       error: true,
-      message: error
+      message: 'error(400) invalid ID.'
     });
   }
 };
