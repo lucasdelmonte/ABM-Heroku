@@ -1,40 +1,40 @@
 # ABM API MongoDB - Heroku
 
-## Descripción
+## Description
 
-Creacion de API rest desde 0
+Rest API creation 
 
-### Instrucciones
+### Instructions
 
-Pasos a seguir para poder probar el proyecto en su pc.
+Steps to follow to be able to test the project on your pc.
 
-1. Abrir terminal
-
-```
-Terminal de Visual Studio Code
-```
-
-2. Clonar proyecto
+1. Open shell
 
 ```
-Colocar git clone https://github.com/lucasdelmonte/ABM-Heroku.git en la terminal
+Shell in Visual Studio Code
+```
+
+2. Clone project 
+
+```
+Set "git clone https://github.com/lucasdelmonte/ABM-Heroku.git" in the shell
 ```
 
 3. npm install
 
 ```
-Instalamos los paquetes necesarios para poder correr el sistema con npm install
+We install the necessary packages to be able to run the system with "npm install" 
 ```
 
 4. npm start
 
 ```
-Iniciamos el servidor con el comando npm start
+We start the server with the command "npm start" 
 ```
 
-5. Ejecución local en http://localhost:8000
+5. Type in your browser "http://localhost:8000"
 
-- Productos
+- Products
 
 ```
 GET: http://localhost:8000/api/products/all
@@ -43,10 +43,10 @@ POST: http://localhost:8000/api/products/
 PUT: http://localhost:8000/api/products/id
 DELETE: http://localhost:8000/api/products/id
 
-Link Colecciones POSTMAN https://www.postman.com/collections/c8bf7c7411430f3c6cdb
+Postman Collections Link https://www.postman.com/collections/c8bf7c7411430f3c6cdb
 ```
 
-- Proveedores
+- Providers
 
 ```
 GET: http://localhost:8000/api/providers/all
@@ -58,14 +58,14 @@ POST: http://localhost:8000/api/providers/
 PUT: http://localhost:8000/api/providers/id
 DELETE: http://localhost:8000/api/providers/id
 
-Link Colecciones POSTMAN https://www.getpostman.com/collections/aa4ea8b56fa4a88349d4
+Postman Collections Link https://www.getpostman.com/collections/aa4ea8b56fa4a88349d4
 
 ```
 
-### Equipo de trabajo y distribución
+### Work and distribution team
 
-- De Castro Gonzalo encargado de la rama (providers)
-- Delmonte Lucas encargado de la rama (products)
+- De Castro Gonzalo branch (providers)
+- Delmonte Lucas branch (products)
 
 ```
 
