@@ -1,6 +1,6 @@
 const modelProvider = require('../Models/modelProvider');
 
-// Obtener proveedores
+// Get Providers
 exports.getAllProviders = async (req, res) => {
   try {
     const response = await modelProvider.find();
@@ -16,7 +16,7 @@ exports.getAllProviders = async (req, res) => {
   }
 };
 
-//Agregar Proveedores
+//Add Provider
 exports.addProvider = async (req, res) => {
   try {
     const provider = new modelProvider(req.body);
@@ -40,7 +40,7 @@ exports.addProvider = async (req, res) => {
   }
 };
 
-//Buscar Proveedores por ID
+//Search Providers by ID
 exports.searchById = async (req, res) => {
   try {
     const response = await modelProvider.findById({
@@ -64,7 +64,7 @@ exports.searchById = async (req, res) => {
   }
 };
 
-//Buscar Proveedores por Nombre
+//Search Providers by Firstname
 exports.searchByfirstName = async (req, res) => {
   try {
     const response = await modelProvider.find({
@@ -89,7 +89,7 @@ exports.searchByfirstName = async (req, res) => {
   }
 };
 
-//Buscar Proveedores por Apellido
+//Search Providers by Lastname
 exports.searchBylastName = async (req, res) => {
   try {
     const response = await modelProvider.find({
@@ -114,7 +114,7 @@ exports.searchBylastName = async (req, res) => {
   }
 };
 
-//Buscar Proveedores por Email
+//Search Providers by Email
 exports.searchByEmail = async (req, res) => {
   try {
     const response = await modelProvider.find({
@@ -139,7 +139,7 @@ exports.searchByEmail = async (req, res) => {
   }
 };
 
-//Actualizar Proveedores
+//Update Provider
 exports.updateProvider = async (req, res) => {
   let providerId = req.params._id;
   let update = req.body;
@@ -155,7 +155,7 @@ exports.updateProvider = async (req, res) => {
   );
 };
 
-//Eliminar Proveedores por ID
+//Delete Providers by ID
 exports.deleteProvider = async (req, res) => {
   try {
     const response = await modelProvider.findOneAndRemove({
