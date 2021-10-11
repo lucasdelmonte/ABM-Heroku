@@ -1,5 +1,3 @@
-const fs = require('fs');
-
 const modelProvider = require('../Models/modelProvider');
 
 // Obtener proveedores
@@ -18,6 +16,7 @@ exports.getAllProviders = async (req, res) => {
   }
 };
 
+//Agregar Proveedores
 exports.addProvider = async (req, res) => {
   try {
     const provider = new modelProvider(req.body);
@@ -36,15 +35,23 @@ exports.addProvider = async (req, res) => {
   } catch (error) {
     return res.status(400).json({
       error: true,
-      message: 'Total error'
+      message: error
     });
   }
 };
 
+//Buscar Proveedores por ID
 exports.searchById = async (req, res) => {
   try {
-    const response = await modelProvider.findById(req.params._id);
-
+    const response = await modelProvider.findById({
+      _id: req.params.providerId
+    });
+    if (!response || response.length === 0) {
+      return res.status(404).json({
+        error: true,
+        message: 'error(404) provider not found'
+      });
+    }
     return res.status(200).json({
       data: response,
       error: false
@@ -52,17 +59,24 @@ exports.searchById = async (req, res) => {
   } catch (error) {
     return res.status(400).json({
       error: true,
-      message: 'error(400) provider not found'
+      message: 'error(400) invalid ID '
     });
   }
 };
 
+//Buscar Proveedores por Nombre
 exports.searchByfirstName = async (req, res) => {
   try {
     const response = await modelProvider.find({
       firstName: req.params.providerFirstName
     });
 
+    if (!response || response.length === 0) {
+      return res.status(404).json({
+        error: true,
+        message: 'error(404) provider not found'
+      });
+    }
     return res.status(200).json({
       data: response,
       error: false
@@ -70,17 +84,24 @@ exports.searchByfirstName = async (req, res) => {
   } catch (error) {
     return res.status(400).json({
       error: true,
-      message: 'error(400) firstname provider not found'
+      message: error
     });
   }
 };
 
+//Buscar Proveedores por Apellido
 exports.searchBylastName = async (req, res) => {
   try {
     const response = await modelProvider.find({
       lastName: req.params.providerLastName
     });
 
+    if (!response || response.length === 0) {
+      return res.status(404).json({
+        error: true,
+        message: 'error(404) provider not found'
+      });
+    }
     return res.status(200).json({
       data: response,
       error: false
@@ -88,17 +109,24 @@ exports.searchBylastName = async (req, res) => {
   } catch (error) {
     return res.status(400).json({
       error: true,
-      message: 'error(400) lastname provider not found'
+      message: error
     });
   }
 };
 
+//Buscar Proveedores por Email
 exports.searchByEmail = async (req, res) => {
   try {
     const response = await modelProvider.find({
       email: req.params.providerEmail
     });
 
+    if (!response || response.length === 0) {
+      return res.status(404).json({
+        error: true,
+        message: 'error(404) provider not found'
+      });
+    }
     return res.status(200).json({
       data: response,
       error: false
@@ -106,16 +134,17 @@ exports.searchByEmail = async (req, res) => {
   } catch (error) {
     return res.status(400).json({
       error: true,
-      message: 'error(400) email provider not found'
+      message: error
     });
   }
 };
 
+//Actualizar Proveedores
 exports.updateProvider = async (req, res) => {
-  let id = req.params._id;
+  let providerId = req.params._id;
   let update = req.body;
   const response = await modelProvider.findByIdAndUpdate(
-    id,
+    providerId,
     update,
     (error, preview) => {
       if (error) {
@@ -126,11 +155,19 @@ exports.updateProvider = async (req, res) => {
   );
 };
 
+//Eliminar Proveedores por ID
 exports.deleteProvider = async (req, res) => {
   try {
     const response = await modelProvider.findOneAndRemove({
       _id: req.params.providerId
     });
+    if (!response || response.length === 0) {
+      return res.status(404).json({
+        error: true,
+        message: 'error(404) provider not found'
+      });
+    }
+
     return res.status(202).json({
       data: response,
       error: false
@@ -138,7 +175,7 @@ exports.deleteProvider = async (req, res) => {
   } catch (error) {
     return res.status(400).json({
       error: true,
-      message: error
+      message: 'error(400) invalid ID'
     });
   }
 };

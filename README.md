@@ -43,22 +43,22 @@ POST: http://localhost:8000/api/products/
 PUT: http://localhost:8000/api/products/id
 DELETE: http://localhost:8000/api/products/id
 
-Link Colecciones POSTMAN https://www.getpostman.com/collections/c8bf7c7411430f3c6cdb
+Link Colecciones POSTMAN https://www.postman.com/collections/c8bf7c7411430f3c6cdb
 ```
 
 - Proveedores
 
 ```
-GET: http://localhost:8000/api/provider/all
-GET: http://localhost:8000/api/provider/id
-GET: http://localhost:8000/api/provider/firstname/
-GET: http://localhost:8000/api/provider/lastname/
-GET: http://localhost:8000/api/provider/email/
-POST: http://localhost:8000/api/provider/
-PUT: http://localhost:8000/api/provider/id
-DELETE: http://localhost:8000/api/provider/id
+GET: http://localhost:8000/api/providers/all
+GET: http://localhost:8000/api/providers/id
+GET: http://localhost:8000/api/providers/firstname/
+GET: http://localhost:8000/api/providers/lastname/
+GET: http://localhost:8000/api/providers/email/
+POST: http://localhost:8000/api/providers/
+PUT: http://localhost:8000/api/providers/id
+DELETE: http://localhost:8000/api/providers/id
 
-Link Colecciones POSTMAN https://www.getpostman.com/collections/ed7b694ec8e356cbaecc
+Link Colecciones POSTMAN https://www.getpostman.com/collections/aa4ea8b56fa4a88349d4
 
 ```
 
