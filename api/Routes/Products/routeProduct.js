@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const controllerProducts = require('../Controllers/controllerProducts');
+const controllerProducts = require('../../Controllers/controllerProducts');
 
 module.exports = () => {
   router.get('/all', controllerProducts.getAllProducts);
@@ -9,6 +9,4 @@ module.exports = () => {
   router.post('/', controllerProducts.addNewProduct);
   router.delete('/:productId', controllerProducts.deleteProduct);
   return router;
-}
-
-
+};
