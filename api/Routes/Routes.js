@@ -1,5 +1,10 @@
-const productsRoutes = require('./api/Routes/Products/routeProduct');
-const providersRoutes = require('./api/Routes/Providers/routeProvider');
+const express = require('express');
+const router = express.Router();
 
-app.use('/api/products/', productsRoutes());
-app.use('/api/providers/', providersRoutes());
+const productsRoutes = require('./Products/routeProduct');
+const providersRoutes = require('./Providers/routeProvider');
+
+router.use('/api/products/', productsRoutes());
+router.use('/api/providers/', providersRoutes());
+
+module.exports = router;

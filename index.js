@@ -4,9 +4,10 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const conexion_bd = process.env.DB_MONGODB;
-
 const PORT = process.env.PORT || 5000;
+const route = require('./api/Routes/Routes');
 
+app.use(route);
 app.use(cors());
 app.use(express.json());
 
