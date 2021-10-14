@@ -7,7 +7,6 @@ const conexion_bd = process.env.DB_MONGODB;
 const PORT = process.env.PORT || 5000;
 const route = require('./api/Routes/Routes');
 
-app.use(route);
 app.use(cors());
 app.use(express.json());
 
@@ -23,6 +22,8 @@ mongoose
 app.get('/', (req, res) => {
   res.send('Server ok');
 });
+
+app.use(route);
 
 app.listen(PORT, () => {
   console.log('Listening on port', PORT);
