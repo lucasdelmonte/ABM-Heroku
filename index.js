@@ -21,7 +21,7 @@ mongoose
   });
 
 app.get('/', (req, res) => {
-  res.send('Server ok');
+  res.send('Server ok!');
 });
 
 app.listen(PORT, () => {
