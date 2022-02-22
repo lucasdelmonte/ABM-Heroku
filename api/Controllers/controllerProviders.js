@@ -144,7 +144,7 @@ exports.updateProvider = async (req, res) => {
 	let _id = req.params.providerId;
 	let update = req.body;
 	const response = await modelProvider.findByIdAndUpdate(
-		providerId,
+		_id,
 		update,
 		(error, preview) => {
 			if (error) {
