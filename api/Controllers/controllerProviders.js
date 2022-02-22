@@ -141,10 +141,10 @@ exports.searchByEmail = async (req, res) => {
 
 //Update Provider
 exports.updateProvider = async (req, res) => {
-	let _id = req.params.providerId;
+	let providerId = req.params._id;
 	let update = req.body;
 	const response = await modelProvider.findByIdAndUpdate(
-		_id,
+		providerId,
 		update,
 		(error, preview) => {
 			if (error) {
