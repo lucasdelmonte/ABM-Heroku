@@ -141,18 +141,32 @@ exports.searchByEmail = async (req, res) => {
 
 //Update Provider
 exports.updateProvider = async (req, res) => {
-	let providerId = req.params._id;
-	let update = req.body;
-	const response = await modelProvider.findByIdAndUpdate(
-		providerId,
-		update,
-		(error, preview) => {
-			if (error) {
-				return res.status(500).json({ message: 'error' });
-			}
-			return res.status(200).json({ preview, update });
+	try {
+		let provider = await modelProvider.findById(req.params.id);
+
+		if (!provider) {
+			return res.json({
+				succes: false,
+				message: "Provider ID doesn't exist",
+			});
+		} else {
+			let updateProvider = await modelProvider.findByIdAndUpdate(
+				req.params.id,
+				req.body,
+				{
+					new: true,
+					runValidator: true,
+				}
+			);
+			res.json({
+				succes: false,
+				message: 'Provider updated successfully',
+				provider: updateStudent,
+			});
 		}
-	);
+	} catch (error) {
+		next(error);
+	}
 };
 
 //Delete Providers by ID
