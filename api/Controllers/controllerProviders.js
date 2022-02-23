@@ -147,7 +147,7 @@ exports.updateProvider = async (req, res) => {
 		if (!provider) {
 			return res.json({
 				succes: false,
-				message: "Provider ID doesn't exist",
+				message: "Provider ID doesn't existe",
 			});
 		} else {
 			let updateProvider = await modelProvider.findByIdAndUpdate(
