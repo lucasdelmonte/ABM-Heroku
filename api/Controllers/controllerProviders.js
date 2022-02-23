@@ -161,7 +161,7 @@ exports.updateProvider = async (req, res) => {
 			res.json({
 				succes: false,
 				message: 'Provider updated successfully',
-				provider: updateStudent,
+				provider: updateProvider,
 			});
 		}
 	} catch (error) {
