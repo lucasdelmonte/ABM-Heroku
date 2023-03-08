@@ -27,6 +27,7 @@ exports.addNewUser = async (req, res) => {
 				message: 'Missing data entry.',
 			});
 		}
+
 		const newUser = await User.save();
 		return res.status(201).json({
 			dato: newUser,
