@@ -77,7 +77,6 @@ exports.updateProduct = async (req, res) => {
 			res.status(404).json({ errors: ['Resource not found'] });
 		}
 	} catch (error) {
-		console.log(error);
 		res.status(500).json({ errors: ['An internal server error ocurred.'] });
 	}
 };
