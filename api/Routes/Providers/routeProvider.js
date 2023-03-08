@@ -1,22 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const controllerProviders = require('../../Controllers/controllerProviders');
+const ProviderController = require('../../Controllers/controllerProviders');
 
-module.exports = () => {
-	router.get('/all', controllerProviders.getAllProviders);
-	router.get('/:providerId', controllerProviders.searchById);
-	router.get(
-		'/firstname/:providerFirstName',
-		controllerProviders.searchByfirstName
-	);
-	router.get(
-		'/lastname/:providerLastName',
-		controllerProviders.searchBylastName
-	);
-	router.get('/email/:providerEmail', controllerProviders.searchByEmail);
-	router.put('/:providerId', controllerProviders.updateProvider);
-	router.post('/', controllerProviders.addProvider);
-	router.delete('/:providerId', controllerProviders.deleteProvider);
+router.get('/all', ProviderController.getAllProviders);
+router.get('/:providerId', ProviderController.searchById);
+router.get(
+    '/firstname/:providerFirstName',
+    ProviderController.searchByfirstName
+);
+router.get(
+    '/lastname/:providerLastName',
+    ProviderController.searchBylastName
+);
+router.get('/email/:providerEmail', ProviderController.searchByEmail);
+router.put('/:providerId', ProviderController.updateProvider);
+router.post('/', ProviderController.addProvider);
+router.delete('/:providerId', ProviderController.deleteProvider);
 
-	return router;
-};
+module.exports = router

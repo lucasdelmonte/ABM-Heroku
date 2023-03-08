@@ -5,7 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const conexion_bd = process.env.DB_MONGODB;
 const PORT = process.env.PORT || 5000;
-const route = require('./api/Routes/Routes');
+const apiRoutes = require('./api/Routes/Routes');
 
 app.use(express.json());
 app.use(cors());
@@ -23,10 +23,9 @@ app.get('/', (req, res) => {
   res.send('Server ok!');
 });
 
-app.use(route);
+app.use('/api', apiRoutes);
+app.use('*', (_, res) => res.sendStatus(404))
 
 app.listen(PORT, () => {
   console.log('Listening on port', PORT);
 });
-
-console.log('Welcome');
