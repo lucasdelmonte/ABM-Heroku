@@ -7,8 +7,8 @@ const conexion_bd = process.env.DB_MONGODB;
 const PORT = process.env.PORT || 5000;
 const route = require('./api/Routes/Routes');
 
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 
 mongoose
   .connect(conexion_bd)
